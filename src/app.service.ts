@@ -108,7 +108,6 @@ export class AppService implements OnModuleInit {
     if (ctx.chat.type != 'supergroup' && ctx.chat.type != 'group') return console.log(ctx.chat.id, '不是群组');
     const chatId = ctx.chat.id;
     const user = ctx.message.from;
-    const thisgroup = await this.GetThisGroup(chatId, ctx.chat.title);
     //把新人从待发言名单中删除
     await this.ClearSpokenTimer(chatId, user.id);
   }

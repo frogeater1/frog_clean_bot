@@ -15,8 +15,7 @@ import { MultiGroupConfigEntity } from './entities/multiGroupConfig.entity';
         synchronize: process.env.TYPEORM_SYNCHRONIZE == 'true',
       }),
       dataSourceFactory: async (options) => {
-        const dataSource = await new DataSource(options).initialize();
-        return dataSource;
+        return  await new DataSource(options).initialize();
       },
     }),
     TypeOrmModule.forFeature([MultiGroupConfigEntity]),
