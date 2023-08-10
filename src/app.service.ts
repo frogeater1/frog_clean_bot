@@ -9,7 +9,6 @@ import { message } from 'telegraf/filters';
 import Mustache from 'mustache';
 import { User } from 'telegraf/typings/core/types/typegram';
 
-import history from './result.json';
 
 @Injectable()
 export class AppService implements OnModuleInit {
@@ -149,31 +148,4 @@ export class AppService implements OnModuleInit {
     return user.first_name + (user.last_name ? ' ' + user.last_name : '');
   }
 
-  // async DealWithHistory() {
-  //
-  //   const blockKeys = (await this.multiGroupConfigEntityRepository.findOneBy({ chatId: -959569574 })).blockKeys;
-  //   const ids = [];
-  //   const names = [];
-  //
-  //   for (const msg of history.messages) {
-  //     const name = msg.actor;
-  //     if (name == null || name == '') continue;
-  //     if (names.includes(name)) continue;
-  //
-  //     for (const key of blockKeys) {
-  //       if (name.includes(key)) {
-  //         const userId = parseInt((msg.from_id ?? msg.actor_id).slice(4));
-  //         names.push(name);
-  //         ids.push(userId);
-  //       }
-  //     }
-  //   }
-  //   for (const id of ids) {
-  //     try {
-  //       await this.bot.telegram.banChatMember(-959569574, id);
-  //     } catch (error) {
-  //       console.log(error);
-  //     }
-  //   }
-  // }
 }
