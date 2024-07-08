@@ -65,8 +65,11 @@ export class AppService implements OnModuleInit {
       }
     }
 
+    const link_user = new URL('tg://user');
+    link_user.searchParams.set('id', user.id.toString());
     let welcome = Mustache.render(template.hello, {
-      username: username,
+      username,
+      link_user,
     });
     welcome += template.speak_please;
 
