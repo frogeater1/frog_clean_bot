@@ -73,7 +73,9 @@ export class AppService implements OnModuleInit {
     });
     welcome += template.speak_please;
 
-    const msg = await this.bot.telegram.sendMessage(chatId, welcome);
+    const msg = await this.bot.telegram.sendMessage(chatId, welcome,{
+      parse_mode:'HTML'
+    });
     this.AutoDelete(chatId, [msg.message_id], 5 * 60 + 10);
 
     thisgroup.unspokenWarningTimer.set(
