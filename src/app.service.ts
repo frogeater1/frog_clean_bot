@@ -73,8 +73,8 @@ export class AppService implements OnModuleInit {
     });
     welcome += template.speak_please;
 
-    const msg = await this.bot.telegram.sendMessage(chatId, welcome,{
-      parse_mode:'HTML'
+    const msg = await this.bot.telegram.sendMessage(chatId, welcome, {
+      parse_mode: 'HTML',
     });
     this.AutoDelete(chatId, [msg.message_id], 5 * 60 + 10);
 
@@ -85,7 +85,9 @@ export class AppService implements OnModuleInit {
           reply_to_message_id: ctx.message.message_id,
           allow_sending_without_reply: true,
         }).catch(console.log);
-        this.AutoDelete(chatId, [msg.message_id], 2 * 60 + 10);
+        if (msg) {
+          this.AutoDelete(chatId, [msg.message_id], 2 * 60 + 10);
+        }
         thisgroup.unspokenWarningTimer.delete(user.id);
       }, 3 * 60 * 1000),
     );
